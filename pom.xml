@@ -12,6 +12,7 @@
     <properties>
         <spring.version>3.2.8.RELEASE</spring.version>
         <jodd.version>3.5.1</jodd.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <dependency>
