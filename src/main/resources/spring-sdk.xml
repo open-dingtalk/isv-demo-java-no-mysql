@@ -6,7 +6,7 @@
 
 
     <bean id="defaultConfig" class="com.dingtalk.open.client.DefaultConfig">
-        <property name="apiDomain" value="${oapi.environment}"/>
+        <!--<property name="apiDomain" value="${oapi.environment}"/>-->
         <!--<property name="apiDomain" value=" http://10.218.141.241:7001"/>-->
         <property name="globalHttpConfig">
             <bean class="com.dingtalk.open.client.DefaultConfig.HttpConfig">

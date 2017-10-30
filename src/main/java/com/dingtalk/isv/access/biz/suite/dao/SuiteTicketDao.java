@@ -4,6 +4,7 @@ import com.dingtalk.isv.access.biz.suite.model.SuiteDO;
 import com.dingtalk.isv.access.biz.suite.model.SuiteTicketDO;
 import com.google.common.collect.Lists;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -14,6 +15,8 @@ import java.util.Map;
 public class SuiteTicketDao {
 
     private Map<String , SuiteTicketDO> db = new HashMap<String, SuiteTicketDO>();
+
+
 
 	/**
 	 * 创建或更新一个套件SuiteTicket

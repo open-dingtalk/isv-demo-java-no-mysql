@@ -53,8 +53,8 @@ public class JsConfigController {
     private CorpManageService corpManageService;
     @Resource
     private StaffManageService staffManageService;
-    @Resource
-    private HttpResult httpResult;
+//    @Resource
+//    private HttpResult httpResult;
     @Resource
     private SuiteManageService suiteManageService;
 
@@ -93,14 +93,14 @@ public class JsConfigController {
             jsapiConfig.put("timeStamp",timeStamp);
             jsapiConfig.put("agentId",corpAppVOSr.getResult().getAgentId());
             jsapiConfig.put("corpId",corpId);
-            return httpResult.getSuccess(jsapiConfig);
+            return HttpResult.getSuccess(jsapiConfig);
         }catch (Exception e){
             bizLogger.info(LogFormatter.getKVLogData(LogFormatter.LogEvent.END,
                     "系统错误",
                     LogFormatter.KeyValue.getNew("url", url),
                     LogFormatter.KeyValue.getNew("corpId", corpId)
             ),e);
-            return httpResult.getFailure(ServiceResultCode.SYS_ERROR.getErrCode(),ServiceResultCode.SYS_ERROR.getErrMsg());
+            return HttpResult.getFailure(ServiceResultCode.SYS_ERROR.getErrCode(),ServiceResultCode.SYS_ERROR.getErrMsg());
         }
     }
 
@@ -139,14 +139,14 @@ public class JsConfigController {
                     LogFormatter.KeyValue.getNew("userId", userSr.getResult().getUserId())
             ));
 
-            return httpResult.getSuccess(result);
+            return HttpResult.getSuccess(result);
         }catch (Exception e){
             bizLogger.info(LogFormatter.getKVLogData(LogFormatter.LogEvent.END,
                     "get_user_info错误",
                     LogFormatter.KeyValue.getNew("url", url),
                     LogFormatter.KeyValue.getNew("corpId", corpId)
             ),e);
-            return httpResult.getFailure(ServiceResultCode.SYS_ERROR.getErrCode(),ServiceResultCode.SYS_ERROR.getErrMsg());
+            return HttpResult.getFailure(ServiceResultCode.SYS_ERROR.getErrCode(),ServiceResultCode.SYS_ERROR.getErrMsg());
         }
     }
 
@@ -176,12 +176,12 @@ public class JsConfigController {
             Map<String,Object> result = new HashMap<String, Object>();
             result.put("result", rsp.getBody());
 
-            return httpResult.getSuccess(result);
+            return HttpResult.getSuccess(result);
         } catch (ApiException e) {
             bizLogger.info(LogFormatter.getKVLogData(LogFormatter.LogEvent.END,
                     "get_outter_tag错误"
             ),e);
-            return httpResult.getFailure(ServiceResultCode.SYS_ERROR.getErrCode(),ServiceResultCode.SYS_ERROR.getErrMsg());
+            return HttpResult.getFailure(ServiceResultCode.SYS_ERROR.getErrCode(),ServiceResultCode.SYS_ERROR.getErrMsg());
         }
     }
 
@@ -226,14 +226,14 @@ public class JsConfigController {
             jsapiConfig.put("timeStamp",timeStamp);
             jsapiConfig.put("agentId",corpAppVOSr.getResult().getAgentId());
             jsapiConfig.put("corpId",corpId);
-            return httpResult.getSuccess(jsapiConfig);
+            return HttpResult.getSuccess(jsapiConfig);
         }catch (Exception e){
             bizLogger.info(LogFormatter.getKVLogData(LogFormatter.LogEvent.END,
                     "系统错误",
                     LogFormatter.KeyValue.getNew("url", url),
                     LogFormatter.KeyValue.getNew("corpId", corpId)
             ),e);
-            return httpResult.getFailure(ServiceResultCode.SYS_ERROR.getErrCode(),ServiceResultCode.SYS_ERROR.getErrMsg());
+            return HttpResult.getFailure(ServiceResultCode.SYS_ERROR.getErrCode(),ServiceResultCode.SYS_ERROR.getErrMsg());
         }
     }
      */
