@@ -53,8 +53,6 @@ public class SuiteCallBackController {
     private String token;
     @Value("#{config['suite.aes']}")
     private String aesKey;
-    @Value("#{config['suite.corpId']}")
-    private String corpId;
 
     @ResponseBody
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
@@ -87,7 +85,7 @@ public class SuiteCallBackController {
                     LogFormatter.KeyValue.getNew("json", json)
             ));
 
-            DingTalkEncryptor dingTalkEncryptor = new DingTalkEncryptor(token, aesKey, corpId);
+            DingTalkEncryptor dingTalkEncryptor = new DingTalkEncryptor(token, aesKey, "suite4xxxxxxxxxxxxxxx");
             String encryptMsg = json.getString("encrypt");
             String plainText = dingTalkEncryptor.getDecryptMsg(signature, timestamp, nonce, encryptMsg);
             JSONObject callbackMsgJson = JSONObject.parseObject(plainText);
