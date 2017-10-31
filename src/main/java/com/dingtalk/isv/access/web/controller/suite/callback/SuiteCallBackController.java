@@ -54,11 +54,6 @@ public class SuiteCallBackController {
     @Value("#{config['suite.aes']}")
     private String aesKey;
 
-    @ResponseBody
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String printHello() {
-        return "hello world";
-    }
 
     /**
      * 创建套件的时候,回调地址就填写这个
@@ -75,8 +70,7 @@ public class SuiteCallBackController {
             @RequestParam(value = "signature", required = false) String signature,
             @RequestParam(value = "timestamp", required = false) String timestamp,
             @RequestParam(value = "nonce", required = false) String nonce,
-            @RequestBody(required = false) JSONObject json
-    ) {
+            @RequestBody(required = false) JSONObject json) {
         try {
             bizLogger.info(LogFormatter.getKVLogData(LogFormatter.LogEvent.START,
                     LogFormatter.KeyValue.getNew("signature", signature),
@@ -85,12 +79,12 @@ public class SuiteCallBackController {
                     LogFormatter.KeyValue.getNew("json", json)
             ));
 
+            // suite4xxxxxxxxxxxxxxx是创建套件时固定的suiteKey, 因为这个时候还没有套件只能使用模拟的
             DingTalkEncryptor dingTalkEncryptor = new DingTalkEncryptor(token, aesKey, "suite4xxxxxxxxxxxxxxx");
             String encryptMsg = json.getString("encrypt");
             String plainText = dingTalkEncryptor.getDecryptMsg(signature, timestamp, nonce, encryptMsg);
             JSONObject callbackMsgJson = JSONObject.parseObject(plainText);
-            String random = callbackMsgJson.getString("Random");
-            String responseEncryMsg = random;
+            String responseEncryMsg = callbackMsgJson.getString("Random");
             Map<String, String> encryptedMap = dingTalkEncryptor.getEncryptedMap(responseEncryMsg, System.currentTimeMillis(), com.dingtalk.oapi.lib.aes.Utils.getRandomStr(8));
             return encryptedMap;
         } catch (Exception e) {
