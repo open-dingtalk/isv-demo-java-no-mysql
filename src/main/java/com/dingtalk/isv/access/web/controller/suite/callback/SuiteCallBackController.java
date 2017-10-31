@@ -146,6 +146,8 @@ public class SuiteCallBackController {
             //具体业务处理
             String returnStr = isvCallbackEvent(plainText, suiteKey);
             Map<String, String> encryptedMap = dingTalkEncryptor.getEncryptedMap(returnStr, System.currentTimeMillis(), com.dingtalk.oapi.lib.aes.Utils.getRandomStr(8));
+
+            bizLogger.info("callback 返回 " + returnStr);
             return encryptedMap;
         } catch (DingTalkEncryptException e) {
             bizLogger.error(LogFormatter.getKVLogData(LogFormatter.LogEvent.END,
@@ -182,7 +184,6 @@ public class SuiteCallBackController {
         String responseEncryMsg = "success";
         if (SuitePushType.SUITE_TICKET.getKey().equals(eventType)) {
             String receiveSuiteTicket = callbackMsgJson.getString("SuiteTicket");
-            String receiveSuiteKey = callbackMsgJson.getString("SuiteKey");
             SuiteTicketVO suiteTicketVO = new SuiteTicketVO();
             suiteTicketVO.setSuiteTicket(receiveSuiteTicket);
             suiteTicketVO.setSuiteKey(suiteKey);
