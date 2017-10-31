@@ -156,14 +156,6 @@ public class SuiteCallBackController {
                     LogFormatter.KeyValue.getNew("nonce", nonce),
                     LogFormatter.KeyValue.getNew("json", json)
             ), e);
-            mainLogger.error(LogFormatter.getKVLogData(LogFormatter.LogEvent.END,
-                    "解密失败程序异常",
-                    LogFormatter.KeyValue.getNew("suiteKey", suiteKey),
-                    LogFormatter.KeyValue.getNew("signature", signature),
-                    LogFormatter.KeyValue.getNew("timestamp", timestamp),
-                    LogFormatter.KeyValue.getNew("nonce", nonce),
-                    LogFormatter.KeyValue.getNew("json", json)
-            ), e);
         } catch (Exception e) {
             bizLogger.error(LogFormatter.getKVLogData(LogFormatter.LogEvent.END,
                     "未知异常",
@@ -173,31 +165,6 @@ public class SuiteCallBackController {
                     LogFormatter.KeyValue.getNew("nonce", nonce),
                     LogFormatter.KeyValue.getNew("json", json)
             ), e);
-            mainLogger.error(LogFormatter.getKVLogData(LogFormatter.LogEvent.END,
-                    "未知异常",
-                    LogFormatter.KeyValue.getNew("suiteKey", suiteKey),
-                    LogFormatter.KeyValue.getNew("signature", signature),
-                    LogFormatter.KeyValue.getNew("timestamp", timestamp),
-                    LogFormatter.KeyValue.getNew("nonce", nonce),
-                    LogFormatter.KeyValue.getNew("json", json)
-            ), e);
-        } catch (Throwable throwable) {
-            bizLogger.error(LogFormatter.getKVLogData(LogFormatter.LogEvent.END,
-                    "未知异常",
-                    LogFormatter.KeyValue.getNew("suiteKey", suiteKey),
-                    LogFormatter.KeyValue.getNew("signature", signature),
-                    LogFormatter.KeyValue.getNew("timestamp", timestamp),
-                    LogFormatter.KeyValue.getNew("nonce", nonce),
-                    LogFormatter.KeyValue.getNew("json", json)
-            ), throwable);
-            mainLogger.error(LogFormatter.getKVLogData(LogFormatter.LogEvent.END,
-                    "未知异常",
-                    LogFormatter.KeyValue.getNew("suiteKey", suiteKey),
-                    LogFormatter.KeyValue.getNew("signature", signature),
-                    LogFormatter.KeyValue.getNew("timestamp", timestamp),
-                    LogFormatter.KeyValue.getNew("nonce", nonce),
-                    LogFormatter.KeyValue.getNew("json", json)
-            ), throwable);
         }
         return null;
     }
